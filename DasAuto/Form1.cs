@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.OleDb;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -19,9 +20,17 @@ namespace DasAuto
 {
     public partial class Form1 : Form
     {
+        public static string connectString = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=autoDB.accdb;";
+
+        private OleDbConnection myConnection;
+
         public Form1()
         {
             InitializeComponent();
+
+            myConnection = new OleDbConnection(connectString);
+
+            myConnection.Open();
             
         }
         int tabN;
@@ -66,6 +75,20 @@ namespace DasAuto
             pb_count(tabSel);
             
 
+        }
+
+        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            myConnection.Close();
+        }
+
+        private void TestButton1_Click(object sender, EventArgs e)
+        {
+            string query = "SELECT Model FROM Model WHERE id_model = 1";
+
+            OleDbCommand command = new OleDbCommand(query, myConnection);
+
+            textBox1.Text = command.ExecuteScalar().ToString();
         }
     }
 }
