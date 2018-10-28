@@ -6,7 +6,7 @@ using System.Data.OleDb;
 using System.Drawing;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
+//using System.Threading.Tasks;
 using System.Windows.Forms;
 
 /* цена
@@ -72,7 +72,7 @@ namespace DasAuto
             }
            // Sql_getter(); // вызов sql функции
 
-            textBox1.Text = vars.rPriceClass.ToString() + " " + vars.rPriceClassMin.ToString();
+            //textBox1.Text = vars.rPriceClass.ToString() + " " + vars.rPriceClassMin.ToString();
 
         }
         public void TabBody()
@@ -83,7 +83,7 @@ namespace DasAuto
             }
             if (rBbodyHatch.Checked)
             {
-                vars.rBodyCheck = "'Хэтчек'";
+                vars.rBodyCheck = "'Хэтчбек'";
             }
             if (rBbodySedan.Checked)
             {
@@ -91,7 +91,7 @@ namespace DasAuto
             }
             if (rBbodyMinivan.Checked)
             {
-                vars.rBodyCheck = "'Мнивен'";
+                vars.rBodyCheck = "'Минивен'";
             }
             if (rBbodySUV.Checked)
             {
@@ -122,7 +122,7 @@ namespace DasAuto
             }
             if (rBtransAny.Checked)
             {
-                vars.rTrans = "'Механика' OR Body = 'Автомат' OR Body = 'Робот' OR Body = 'Вариатор'"; // пока хз
+                vars.rTrans = "'Механика' OR Transmission = 'Автомат' OR Transmission = 'Робот' OR Transmission = 'Вариатор'"; // пока хз
             }
         }
 
@@ -136,8 +136,8 @@ namespace DasAuto
             string strPr2 = vars.strPr;
 
                // string query = "SELECT name_mark, Model, Body, Price FROM Model WHERE Price > " + vars.rPriceClass.ToString() + " AND Price < " + vars.rPriceClassMin.ToString() + " AND Body = " + vars.rBodyCheck.ToString();
-               string query = "SELECT name_mark, Model, Body, Price FROM Model WHERE Price < " + vars.rPriceClass.ToString() + " AND Price > " + vars.rPriceClassMin.ToString() + " AND Body = " 
-                                    + vars.rBodyCheck.ToString() + " AND Transmission = " + vars.rTrans;
+               string query = "SELECT name_mark, Model, Body, Transmission, Price FROM Model WHERE Price < " + vars.rPriceClass.ToString() + " AND Price > " + vars.rPriceClassMin.ToString() + " AND Body = " 
+                                    + vars.rBodyCheck.ToString() + " AND (Transmission = " + vars.rTrans + ")";
                 strPr2 = query;
             
                 OleDbCommand command = new OleDbCommand(strPr2, myConnection);
@@ -145,20 +145,21 @@ namespace DasAuto
                
                 while (reader.Read())
                 {
-                    listBox1.Items.Add(reader[0].ToString() + " " + reader[1].ToString() + ", " + reader[2].ToString() + ", " + reader[3].ToString() + " ₽ ");
+                    listBox1.Items.Add(reader[0].ToString() + " " + reader[1].ToString() + ", " + reader[2].ToString() + ", " + reader[3].ToString() + ", " + reader[4].ToString() + " ₽ ");
                 }
                 reader.Close();
         }
 
         public void Pb_count(int valueBar)  // бар загрузки
         {
-            int count = 3;                      // колличество делений в загрузке
+            int count = 2;                      // колличество делений в загрузке
             progressBar1.Maximum = count;
             progressBar1.Value = valueBar;
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            textBox1.Visible = false;
             tabControl1.SelectedIndex = 0;
             rBprice1.Checked = true;
             rBbodyCoupe.Checked = true;

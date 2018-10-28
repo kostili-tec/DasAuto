@@ -47,23 +47,20 @@
             this.rBbodyCoupe = new System.Windows.Forms.RadioButton();
             this.label2 = new System.Windows.Forms.Label();
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.rBtransAny = new System.Windows.Forms.RadioButton();
             this.rBtrans4 = new System.Windows.Forms.RadioButton();
             this.rBtrans3 = new System.Windows.Forms.RadioButton();
             this.rBtrans2 = new System.Windows.Forms.RadioButton();
             this.rBtrans1 = new System.Windows.Forms.RadioButton();
             this.label3 = new System.Windows.Forms.Label();
-            this.tabPage4 = new System.Windows.Forms.TabPage();
-            this.label4 = new System.Windows.Forms.Label();
             this.listBox1 = new System.Windows.Forms.ListBox();
             this.label5 = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.CheckButton = new System.Windows.Forms.Button();
-            this.rBtransAny = new System.Windows.Forms.RadioButton();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
             this.tabPage3.SuspendLayout();
-            this.tabPage4.SuspendLayout();
             this.SuspendLayout();
             // 
             // progressBar1
@@ -98,7 +95,6 @@
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Controls.Add(this.tabPage3);
-            this.tabControl1.Controls.Add(this.tabPage4);
             this.tabControl1.Location = new System.Drawing.Point(82, 33);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.RightToLeft = System.Windows.Forms.RightToLeft.No;
@@ -282,6 +278,17 @@
             this.tabPage3.Text = "tabPage3";
             this.tabPage3.UseVisualStyleBackColor = true;
             // 
+            // rBtransAny
+            // 
+            this.rBtransAny.AutoSize = true;
+            this.rBtransAny.Location = new System.Drawing.Point(175, 153);
+            this.rBtransAny.Name = "rBtransAny";
+            this.rBtransAny.Size = new System.Drawing.Size(59, 17);
+            this.rBtransAny.TabIndex = 5;
+            this.rBtransAny.TabStop = true;
+            this.rBtransAny.Text = "Любая";
+            this.rBtransAny.UseVisualStyleBackColor = true;
+            // 
             // rBtrans4
             // 
             this.rBtrans4.AutoSize = true;
@@ -335,26 +342,6 @@
             this.label3.TabIndex = 0;
             this.label3.Text = "Тип коробки";
             // 
-            // tabPage4
-            // 
-            this.tabPage4.BackColor = System.Drawing.Color.Transparent;
-            this.tabPage4.Controls.Add(this.label4);
-            this.tabPage4.Location = new System.Drawing.Point(4, 22);
-            this.tabPage4.Name = "tabPage4";
-            this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage4.Size = new System.Drawing.Size(599, 212);
-            this.tabPage4.TabIndex = 3;
-            this.tabPage4.Text = "tabPage4";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(17, 18);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(37, 13);
-            this.label4.TabIndex = 0;
-            this.label4.Text = "Мощь";
-            // 
             // listBox1
             // 
             this.listBox1.FormattingEnabled = true;
@@ -378,6 +365,7 @@
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(438, 20);
             this.textBox1.TabIndex = 8;
+            this.textBox1.Visible = false;
             // 
             // CheckButton
             // 
@@ -388,17 +376,6 @@
             this.CheckButton.Text = "CHECK";
             this.CheckButton.UseVisualStyleBackColor = true;
             this.CheckButton.Click += new System.EventHandler(this.CheckButton_Click);
-            // 
-            // rBtransAny
-            // 
-            this.rBtransAny.AutoSize = true;
-            this.rBtransAny.Location = new System.Drawing.Point(175, 153);
-            this.rBtransAny.Name = "rBtransAny";
-            this.rBtransAny.Size = new System.Drawing.Size(59, 17);
-            this.rBtransAny.TabIndex = 5;
-            this.rBtransAny.TabStop = true;
-            this.rBtransAny.Text = "Любая";
-            this.rBtransAny.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 
@@ -424,8 +401,6 @@
             this.tabPage2.PerformLayout();
             this.tabPage3.ResumeLayout(false);
             this.tabPage3.PerformLayout();
-            this.tabPage4.ResumeLayout(false);
-            this.tabPage4.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -441,10 +416,8 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.TabPage tabPage3;
-        private System.Windows.Forms.TabPage tabPage4;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label4;
         private System.Windows.Forms.RadioButton rBprice4;
         private System.Windows.Forms.RadioButton rBprice3;
         private System.Windows.Forms.RadioButton rBprice2;
