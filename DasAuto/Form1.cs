@@ -35,13 +35,79 @@ namespace DasAuto
         }
         int tabN;
         int tabSel;
+        int rPrice = 0; int rPriceMin = 0;
 
-        public void TabSelector()
+
+        public class GlobalVars
         {
-            //tabSel = tabControl1.SelectedIndex;
+            public string strPr = null; public int rPriceClass, rPriceClassMin;
         }
 
-        public void pb_count(int valueBar)  // загрузка
+        public void TabPrice() // чек цены
+        {
+            
+            if (rBprice1.Checked)
+            {
+                rPrice = 1600000;
+                rPriceMin = 0;
+                Sql_getter(rPrice, rPriceMin);
+
+            }
+            if (rBprice2.Checked)
+            {
+                rPrice = 2500000;
+                rPriceMin = 1600000;
+                Sql_getter(rPrice, rPriceMin);
+            }
+            if (rBprice3.Checked || rBprice4.Checked)
+            {
+                rPrice = 6000000;
+                rPriceMin = 2500000;
+                Sql_getter(rPrice, rPriceMin);
+            }
+            
+            textBox1.Text = rPrice.ToString() + " " + rPriceMin.ToString();
+
+        }
+        public void TabBody()
+        {
+
+        }
+
+        public void Sql_getter(int VoidPrice, int VoidPriceMin)   //SQL запросы
+        {
+            listBox1.Items.Clear();
+
+            GlobalVars vars = new GlobalVars();
+            string strPr2 = vars.strPr;
+
+            if (rBprice1.Checked || rBprice2.Checked || rBprice3.Checked)
+           
+            {
+
+                string query = "SELECT name_mark, Model, Body, Price FROM Model WHERE price > " + VoidPriceMin.ToString() + " AND price < " + VoidPrice.ToString();
+                strPr2 = query;
+            }
+             if (rBprice4.Checked)
+            {
+                string query = "SELECT name_mark, Model, Body, Price FROM Model WHERE price > " + VoidPrice.ToString();
+                strPr2 = query;
+            }
+             
+                OleDbCommand command = new OleDbCommand(strPr2, myConnection);
+                OleDbDataReader reader = command.ExecuteReader();
+
+                // textBox1.Text = command.ExecuteScalar().ToString();
+
+                while (reader.Read())
+                {
+                    listBox1.Items.Add(reader[0].ToString() + " " + reader[1].ToString() + ", " + reader[2].ToString() + ", " + reader[3].ToString() + " ₽ ");
+                }
+                reader.Close();
+            
+        }
+
+        public void Pb_count(int valueBar)  // загрузка
         {
             int count = 3;                      // колличество делений в загрузке
             progressBar1.Maximum = count;
@@ -51,6 +117,7 @@ namespace DasAuto
         private void Form1_Load(object sender, EventArgs e)
         {
             tabControl1.SelectedIndex = 0;
+            rBprice1.Checked = true;
         }
 
         private void NextButton_Click(object sender, EventArgs e)
@@ -61,7 +128,9 @@ namespace DasAuto
             if (tabN >= 4)
                 tabN = 0;
             tabControl1.SelectedIndex = tabN;
-            pb_count(tabN);
+            Pb_count(tabN);
+            TabPrice();
+            
 
         }
 
@@ -72,7 +141,7 @@ namespace DasAuto
             if (tabSel < 0)
                 tabSel = 3;
             tabControl1.SelectedIndex = tabSel;
-            pb_count(tabSel);
+            Pb_count(tabSel);
             
 
         }
@@ -84,11 +153,21 @@ namespace DasAuto
 
         private void TestButton1_Click(object sender, EventArgs e)
         {
-            string query = "SELECT Model FROM Model WHERE id_model = 1";
+            listBox1.Items.Clear();
+            TabPrice();
+            // string query = "SELECT Body FROM Model ORDER BY Price = ;";
+            string query = "SELECT name_mark, Model, Body, Price FROM Model WHERE body = 'Седан'"; 
 
             OleDbCommand command = new OleDbCommand(query, myConnection);
+            OleDbDataReader reader = command.ExecuteReader();
 
-            textBox1.Text = command.ExecuteScalar().ToString();
+           // textBox1.Text = command.ExecuteScalar().ToString();
+
+            while(reader.Read())
+            {
+                listBox1.Items.Add(reader[0].ToString() + " " + reader[1].ToString() + ", " + reader[2].ToString() + ", " + reader[3].ToString() + " ₽ ");
+            }
+            reader.Close();
         }
     }
 }
