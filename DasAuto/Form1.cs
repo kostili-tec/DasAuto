@@ -34,80 +34,123 @@ namespace DasAuto
             
         }
         int tabN;
-        int tabSel;
-        int rPrice = 0; int rPriceMin = 0;
+        int tabSel;       
 
 
         public class GlobalVars
         {
-            public string strPr = null; public int rPriceClass, rPriceClassMin;
+            public string strPr = null; // query для sql
+            public int rPriceClass, rPriceClassMin; // цена
+            public string rBodyCheck = null;
+            public string rTrans = null;
         }
+
+        GlobalVars vars = new GlobalVars();
 
         public void TabPrice() // чек цены
         {
             
             if (rBprice1.Checked)
             {
-                rPrice = 1600000;
-                rPriceMin = 0;
-                Sql_getter(rPrice, rPriceMin);
-
+                vars.rPriceClass = 1600000;
+                vars.rPriceClassMin = 0;
             }
             if (rBprice2.Checked)
             {
-                rPrice = 2500000;
-                rPriceMin = 1600000;
-                Sql_getter(rPrice, rPriceMin);
+                vars.rPriceClass = 2500000;
+                vars.rPriceClassMin = 1600000;
             }
-            if (rBprice3.Checked || rBprice4.Checked)
+            if (rBprice3.Checked)
             {
-                rPrice = 6000000;
-                rPriceMin = 2500000;
-                Sql_getter(rPrice, rPriceMin);
+                vars.rPriceClass = 6000000;
+                vars.rPriceClassMin = 2500000;
+            } 
+            if (rBprice4.Checked)
+            {
+                vars.rPriceClass = 999999999;
+                vars.rPriceClassMin = 6000000;
             }
-            
-            textBox1.Text = rPrice.ToString() + " " + rPriceMin.ToString();
+           // Sql_getter(); // вызов sql функции
+
+            textBox1.Text = vars.rPriceClass.ToString() + " " + vars.rPriceClassMin.ToString();
 
         }
         public void TabBody()
         {
-
+            if (rBbodyCoupe.Checked)
+            {
+                vars.rBodyCheck = "'Купэ'";
+            }
+            if (rBbodyHatch.Checked)
+            {
+                vars.rBodyCheck = "'Хэтчек'";
+            }
+            if (rBbodySedan.Checked)
+            {
+                vars.rBodyCheck = "'Седан'";
+            }
+            if (rBbodyMinivan.Checked)
+            {
+                vars.rBodyCheck = "'Мнивен'";
+            }
+            if (rBbodySUV.Checked)
+            {
+                vars.rBodyCheck = "'Внедорожник'";
+            } 
+            if (rBbodyWagon.Checked)
+            {
+                vars.rBodyCheck = "'Универсал'";
+            }
+        }
+        public void TabTrans()
+        {
+            if (rBtrans1.Checked)
+            {
+                vars.rTrans = "'Механика'";
+            }
+            if (rBtrans2.Checked)
+            {
+                vars.rTrans = "'Автомат'";
+            }
+            if (rBtrans3.Checked)
+            {
+                vars.rTrans = "'Робот'";
+            }
+            if (rBtrans4.Checked)
+            {
+                vars.rTrans = "'Вариатор'";
+            }
+            if (rBtransAny.Checked)
+            {
+                vars.rTrans = "'Механика' OR Body = 'Автомат' OR Body = 'Робот' OR Body = 'Вариатор'"; // пока хз
+            }
         }
 
-        public void Sql_getter(int VoidPrice, int VoidPriceMin)   //SQL запросы
+        public void Sql_getter()   //SQL запросы
         {
+            TabPrice();
+            TabBody();
+            TabTrans();
             listBox1.Items.Clear();
-
-            GlobalVars vars = new GlobalVars();
+            
             string strPr2 = vars.strPr;
 
-            if (rBprice1.Checked || rBprice2.Checked || rBprice3.Checked)
-           
-            {
-
-                string query = "SELECT name_mark, Model, Body, Price FROM Model WHERE price > " + VoidPriceMin.ToString() + " AND price < " + VoidPrice.ToString();
+               // string query = "SELECT name_mark, Model, Body, Price FROM Model WHERE Price > " + vars.rPriceClass.ToString() + " AND Price < " + vars.rPriceClassMin.ToString() + " AND Body = " + vars.rBodyCheck.ToString();
+               string query = "SELECT name_mark, Model, Body, Price FROM Model WHERE Price < " + vars.rPriceClass.ToString() + " AND Price > " + vars.rPriceClassMin.ToString() + " AND Body = " 
+                                    + vars.rBodyCheck.ToString() + " AND Transmission = " + vars.rTrans;
                 strPr2 = query;
-            }
-             if (rBprice4.Checked)
-            {
-                string query = "SELECT name_mark, Model, Body, Price FROM Model WHERE price > " + VoidPrice.ToString();
-                strPr2 = query;
-            }
-             
+            
                 OleDbCommand command = new OleDbCommand(strPr2, myConnection);
                 OleDbDataReader reader = command.ExecuteReader();
-
-                // textBox1.Text = command.ExecuteScalar().ToString();
-
+               
                 while (reader.Read())
                 {
                     listBox1.Items.Add(reader[0].ToString() + " " + reader[1].ToString() + ", " + reader[2].ToString() + ", " + reader[3].ToString() + " ₽ ");
                 }
                 reader.Close();
-            
         }
 
-        public void Pb_count(int valueBar)  // загрузка
+        public void Pb_count(int valueBar)  // бар загрузки
         {
             int count = 3;                      // колличество делений в загрузке
             progressBar1.Maximum = count;
@@ -118,6 +161,8 @@ namespace DasAuto
         {
             tabControl1.SelectedIndex = 0;
             rBprice1.Checked = true;
+            rBbodyCoupe.Checked = true;
+            rBtrans1.Checked = true;
         }
 
         private void NextButton_Click(object sender, EventArgs e)
@@ -130,8 +175,6 @@ namespace DasAuto
             tabControl1.SelectedIndex = tabN;
             Pb_count(tabN);
             TabPrice();
-            
-
         }
 
         private void DownButton1_Click(object sender, EventArgs e)
@@ -141,9 +184,7 @@ namespace DasAuto
             if (tabSel < 0)
                 tabSel = 3;
             tabControl1.SelectedIndex = tabSel;
-            Pb_count(tabSel);
-            
-
+            Pb_count(tabSel); 
         }
 
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
@@ -151,23 +192,9 @@ namespace DasAuto
             myConnection.Close();
         }
 
-        private void TestButton1_Click(object sender, EventArgs e)
+        private void CheckButton_Click(object sender, EventArgs e)
         {
-            listBox1.Items.Clear();
-            TabPrice();
-            // string query = "SELECT Body FROM Model ORDER BY Price = ;";
-            string query = "SELECT name_mark, Model, Body, Price FROM Model WHERE body = 'Седан'"; 
-
-            OleDbCommand command = new OleDbCommand(query, myConnection);
-            OleDbDataReader reader = command.ExecuteReader();
-
-           // textBox1.Text = command.ExecuteScalar().ToString();
-
-            while(reader.Read())
-            {
-                listBox1.Items.Add(reader[0].ToString() + " " + reader[1].ToString() + ", " + reader[2].ToString() + ", " + reader[3].ToString() + " ₽ ");
-            }
-            reader.Close();
+            Sql_getter();
         }
     }
 }

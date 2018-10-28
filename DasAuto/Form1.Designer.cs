@@ -56,8 +56,9 @@
             this.label4 = new System.Windows.Forms.Label();
             this.listBox1 = new System.Windows.Forms.ListBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.TestButton1 = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
+            this.CheckButton = new System.Windows.Forms.Button();
+            this.rBtransAny = new System.Windows.Forms.RadioButton();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -267,6 +268,7 @@
             // 
             // tabPage3
             // 
+            this.tabPage3.Controls.Add(this.rBtransAny);
             this.tabPage3.Controls.Add(this.rBtrans4);
             this.tabPage3.Controls.Add(this.rBtrans3);
             this.tabPage3.Controls.Add(this.rBtrans2);
@@ -283,23 +285,23 @@
             // rBtrans4
             // 
             this.rBtrans4.AutoSize = true;
-            this.rBtrans4.Location = new System.Drawing.Point(287, 146);
+            this.rBtrans4.Location = new System.Drawing.Point(287, 107);
             this.rBtrans4.Name = "rBtrans4";
-            this.rBtrans4.Size = new System.Drawing.Size(85, 17);
+            this.rBtrans4.Size = new System.Drawing.Size(73, 17);
             this.rBtrans4.TabIndex = 4;
             this.rBtrans4.TabStop = true;
-            this.rBtrans4.Text = "radioButton4";
+            this.rBtrans4.Text = "Вариатор";
             this.rBtrans4.UseVisualStyleBackColor = true;
             // 
             // rBtrans3
             // 
             this.rBtrans3.AutoSize = true;
-            this.rBtrans3.Location = new System.Drawing.Point(50, 146);
+            this.rBtrans3.Location = new System.Drawing.Point(50, 107);
             this.rBtrans3.Name = "rBtrans3";
-            this.rBtrans3.Size = new System.Drawing.Size(59, 17);
+            this.rBtrans3.Size = new System.Drawing.Size(55, 17);
             this.rBtrans3.TabIndex = 3;
             this.rBtrans3.TabStop = true;
-            this.rBtrans3.Text = "Любая";
+            this.rBtrans3.Text = "Робот";
             this.rBtrans3.UseVisualStyleBackColor = true;
             // 
             // rBtrans2
@@ -370,16 +372,6 @@
             this.label5.TabIndex = 6;
             this.label5.Text = "Вам подходит:";
             // 
-            // TestButton1
-            // 
-            this.TestButton1.Location = new System.Drawing.Point(713, 101);
-            this.TestButton1.Name = "TestButton1";
-            this.TestButton1.Size = new System.Drawing.Size(75, 23);
-            this.TestButton1.TabIndex = 7;
-            this.TestButton1.Text = "button1";
-            this.TestButton1.UseVisualStyleBackColor = true;
-            this.TestButton1.Click += new System.EventHandler(this.TestButton1_Click);
-            // 
             // textBox1
             // 
             this.textBox1.Location = new System.Drawing.Point(111, 514);
@@ -387,13 +379,34 @@
             this.textBox1.Size = new System.Drawing.Size(438, 20);
             this.textBox1.TabIndex = 8;
             // 
+            // CheckButton
+            // 
+            this.CheckButton.Location = new System.Drawing.Point(426, 277);
+            this.CheckButton.Name = "CheckButton";
+            this.CheckButton.Size = new System.Drawing.Size(75, 23);
+            this.CheckButton.TabIndex = 9;
+            this.CheckButton.Text = "CHECK";
+            this.CheckButton.UseVisualStyleBackColor = true;
+            this.CheckButton.Click += new System.EventHandler(this.CheckButton_Click);
+            // 
+            // rBtransAny
+            // 
+            this.rBtransAny.AutoSize = true;
+            this.rBtransAny.Location = new System.Drawing.Point(175, 153);
+            this.rBtransAny.Name = "rBtransAny";
+            this.rBtransAny.Size = new System.Drawing.Size(59, 17);
+            this.rBtransAny.TabIndex = 5;
+            this.rBtransAny.TabStop = true;
+            this.rBtransAny.Text = "Любая";
+            this.rBtransAny.UseVisualStyleBackColor = true;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(822, 615);
+            this.Controls.Add(this.CheckButton);
             this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.TestButton1);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.listBox1);
             this.Controls.Add(this.tabControl1);
@@ -448,8 +461,9 @@
         private System.Windows.Forms.RadioButton rBbodyHatch;
         private System.Windows.Forms.ListBox listBox1;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Button TestButton1;
         private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Button CheckButton;
+        private System.Windows.Forms.RadioButton rBtransAny;
     }
 }
 
