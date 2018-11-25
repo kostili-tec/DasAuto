@@ -106,13 +106,7 @@ namespace DasAuto
                 vars.rTrans = " AND Transmission = 'Механика'";
 
             if (rBtrans2.Checked)
-                vars.rTrans = " AND Transmission = 'Автомат'";
-
-            if (rBtrans3.Checked)
-                vars.rTrans = " AND Transmission = 'Робот'";
-
-            if (rBtrans4.Checked)
-                vars.rTrans = " AND Transmission = 'Вариатор'";
+                vars.rTrans = " AND Transmission = 'Автомат'";            
 
             if (rBtransAny.Checked)
                 vars.rTrans = ""; //" AND Transmission = 'Механика' OR Transmission = 'Автомат' OR Transmission = 'Робот' OR Transmission = 'Вариатор'"; // пока хз
@@ -177,10 +171,11 @@ namespace DasAuto
         {
            
             tabControl1.SelectedIndex = 0;
+            rBdriveCity.Checked = true;
             rBprice1.Checked = true;
-            rBbodyCoupe.Checked = true;
+            rBbodySedan.Checked = true;
             rBtrans1.Checked = true;
-            tabPage1.Appe;
+            
         }
 
         private void NextButton_Click(object sender, EventArgs e)
