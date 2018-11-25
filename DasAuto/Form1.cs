@@ -9,10 +9,10 @@ using System.Text;
 //using System.Threading.Tasks;
 using System.Windows.Forms;
 
-/* цена
+/* для чего будет использоваться авто: езда по городу, езда за городом, такси, грузоперевозки
+ * цена * 
  * кузов
- * объем
- * мощь
+ * коробка * 
  * 
  */
 
@@ -40,105 +40,121 @@ namespace DasAuto
         public class GlobalVars
         {
             public string strPr = null; // query для sql
-            public int rPriceClass, rPriceClassMin; // цена
+            public string rPriceClass, rPriceClassMin; // цена
             public string rBodyCheck = null;
             public string rTrans = null;
+            public string rDrive = null;
+            //public int trackMinValue, trackMaxValue;
         }
 
         GlobalVars vars = new GlobalVars();
 
         public void TabPrice() // чек цены
         {
-            
+
             if (rBprice1.Checked)
             {
-                vars.rPriceClass = 1600000;
-                vars.rPriceClassMin = 0;
+                vars.rPriceClass = "Price < 1600000";
+                vars.rPriceClassMin = " AND Price > 0";
             }
             if (rBprice2.Checked)
             {
-                vars.rPriceClass = 2500000;
-                vars.rPriceClassMin = 1600000;
+                vars.rPriceClass = "Price < 2500000";
+                vars.rPriceClassMin = " AND Price > 1600000";
             }
             if (rBprice3.Checked)
             {
-                vars.rPriceClass = 6000000;
-                vars.rPriceClassMin = 2500000;
-            } 
+                vars.rPriceClass = "Price < 6000000";
+                vars.rPriceClassMin = " AND Price > 2500000";
+            }
             if (rBprice4.Checked)
             {
-                vars.rPriceClass = 999999999;
-                vars.rPriceClassMin = 6000000;
+                vars.rPriceClass = "Price < 999999999";
+                vars.rPriceClassMin = " AND Price > 6000000";
             }
-           // Sql_getter(); // вызов sql функции
+          }
 
-            //textBox1.Text = vars.rPriceClass.ToString() + " " + vars.rPriceClassMin.ToString();
-
-        }
         public void TabBody()
         {
             if (rBbodyCoupe.Checked)
-            {
-                vars.rBodyCheck = "'Купэ'";
-            }
+                vars.rBodyCheck = " AND Body = 'Купе'";
+
             if (rBbodyHatch.Checked)
-            {
-                vars.rBodyCheck = "'Хэтчбек'";
-            }
+                vars.rBodyCheck = " AND Body = 'Хэтчбек'";
+
             if (rBbodySedan.Checked)
-            {
-                vars.rBodyCheck = "'Седан'";
-            }
+                vars.rBodyCheck = " AND Body = 'Седан'";
+
             if (rBbodyMinivan.Checked)
-            {
-                vars.rBodyCheck = "'Минивен'";
-            }
+                vars.rBodyCheck = " AND Body = 'Минивен'";
+
             if (rBbodySUV.Checked)
-            {
-                vars.rBodyCheck = "'Внедорожник'";
-            } 
+                vars.rBodyCheck = " AND Body = 'Внедорожник'";
+
             if (rBbodyWagon.Checked)
-            {
-                vars.rBodyCheck = "'Универсал'";
-            }
+                vars.rBodyCheck = " AND Body = 'Универсал'";
+
+            if (rBbodyFurgon.Checked)
+                vars.rBodyCheck = " AND Body = 'Фургон'";
+
+            if (rBbodyAny.Checked)
+                vars.rBodyCheck = "";
         }
         public void TabTrans()
         {
             if (rBtrans1.Checked)
-            {
-                vars.rTrans = "'Механика'";
-            }
+                vars.rTrans = " AND Transmission = 'Механика'";
+
             if (rBtrans2.Checked)
-            {
-                vars.rTrans = "'Автомат'";
-            }
+                vars.rTrans = " AND Transmission = 'Автомат'";
+
             if (rBtrans3.Checked)
-            {
-                vars.rTrans = "'Робот'";
-            }
+                vars.rTrans = " AND Transmission = 'Робот'";
+
             if (rBtrans4.Checked)
-            {
-                vars.rTrans = "'Вариатор'";
-            }
+                vars.rTrans = " AND Transmission = 'Вариатор'";
+
             if (rBtransAny.Checked)
-            {
-                vars.rTrans = "'Механика' OR Transmission = 'Автомат' OR Transmission = 'Робот' OR Transmission = 'Вариатор'"; // пока хз
-            }
+                vars.rTrans = ""; //" AND Transmission = 'Механика' OR Transmission = 'Автомат' OR Transmission = 'Робот' OR Transmission = 'Вариатор'"; // пока хз
         }
+
+        public void TabDrive()
+        {
+            if (rBdriveCity.Checked)
+                vars.rDrive = " AND TypeCity = true";
+
+            if (rBdriveNature.Checked)
+                vars.rDrive = " AND TypeDirt = true";
+
+            if (rBdriveDach.Checked)
+                vars.rDrive = " AND TypeDach = true";
+
+            if (rBdriveTravel.Checked)
+                vars.rDrive = " AND TypeTravel = true";
+
+            if (rBdriveFast.Checked)
+                vars.rDrive = " AND TypeFast = true";
+
+        }
+
 
         public void Sql_getter()   //SQL запросы
         {
             TabPrice();
             TabBody();
             TabTrans();
+            TabDrive();
             listBox1.Items.Clear();
             
             string strPr2 = vars.strPr;
 
-               // string query = "SELECT name_mark, Model, Body, Price FROM Model WHERE Price > " + vars.rPriceClass.ToString() + " AND Price < " + vars.rPriceClassMin.ToString() + " AND Body = " + vars.rBodyCheck.ToString();
-               string query = "SELECT name_mark, Model, Body, Transmission, Price FROM Model WHERE Price < " + vars.rPriceClass.ToString() + " AND Price > " + vars.rPriceClassMin.ToString() + " AND Body = " 
-                                    + vars.rBodyCheck.ToString() + " AND (Transmission = " + vars.rTrans + ")";
-                strPr2 = query;
+            /* string query = "SELECT name_mark, Model, Body, Transmission, Price FROM Model WHERE Price < " + vars.rPriceClass.ToString() + " AND Price > " + vars.rPriceClassMin.ToString() + " AND Body = " 
+                                  + vars.rBodyCheck.ToString() + " AND (Transmission = " + vars.rTrans + ")"; */
+
+           // string query = "SELECT name_mark, Model, Body, Transmission, Price FROM Model WHERE " + vars.rPriceClass.ToString() + vars.rPriceClassMin.ToString() + vars.rDrive.ToString();
+
+            string query = "SELECT name_mark, Model, Body, Transmission, Price FROM Model WHERE " + vars.rPriceClass.ToString() + vars.rPriceClassMin.ToString() + vars.rBodyCheck.ToString() + vars.rTrans.ToString() + vars.rDrive.ToString();
+            strPr2 = query;
             
                 OleDbCommand command = new OleDbCommand(strPr2, myConnection);
                 OleDbDataReader reader = command.ExecuteReader();
@@ -152,18 +168,19 @@ namespace DasAuto
 
         public void Pb_count(int valueBar)  // бар загрузки
         {
-            int count = 2;                      // колличество делений в загрузке
+            int count = 3;                      // колличество делений в загрузке
             progressBar1.Maximum = count;
             progressBar1.Value = valueBar;
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            textBox1.Visible = false;
+           
             tabControl1.SelectedIndex = 0;
             rBprice1.Checked = true;
             rBbodyCoupe.Checked = true;
             rBtrans1.Checked = true;
+            tabPage1.Appe;
         }
 
         private void NextButton_Click(object sender, EventArgs e)
@@ -176,6 +193,7 @@ namespace DasAuto
             tabControl1.SelectedIndex = tabN;
             Pb_count(tabN);
             TabPrice();
+            
         }
 
         private void DownButton1_Click(object sender, EventArgs e)
@@ -197,5 +215,12 @@ namespace DasAuto
         {
             Sql_getter();
         }
+
+       
+
+       
+
+        
+        
     }
 }

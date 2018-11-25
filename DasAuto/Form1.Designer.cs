@@ -33,12 +33,16 @@
             this.DownButton1 = new System.Windows.Forms.Button();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.rBprice4 = new System.Windows.Forms.RadioButton();
-            this.rBprice3 = new System.Windows.Forms.RadioButton();
-            this.rBprice2 = new System.Windows.Forms.RadioButton();
-            this.rBprice1 = new System.Windows.Forms.RadioButton();
-            this.label1 = new System.Windows.Forms.Label();
+            this.rBdriveFast = new System.Windows.Forms.RadioButton();
+            this.rBdriveNature = new System.Windows.Forms.RadioButton();
+            this.label4 = new System.Windows.Forms.Label();
+            this.rBdriveTravel = new System.Windows.Forms.RadioButton();
+            this.rBdriveDach = new System.Windows.Forms.RadioButton();
+            this.rBdriveCity = new System.Windows.Forms.RadioButton();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.rBbodyFurgon = new System.Windows.Forms.RadioButton();
+            this.rBbodyAny = new System.Windows.Forms.RadioButton();
+            this.rBbodyMicrobus = new System.Windows.Forms.RadioButton();
             this.rBbodyWagon = new System.Windows.Forms.RadioButton();
             this.rBbodyHatch = new System.Windows.Forms.RadioButton();
             this.rBbodyMinivan = new System.Windows.Forms.RadioButton();
@@ -53,21 +57,27 @@
             this.rBtrans2 = new System.Windows.Forms.RadioButton();
             this.rBtrans1 = new System.Windows.Forms.RadioButton();
             this.label3 = new System.Windows.Forms.Label();
+            this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.rBprice4 = new System.Windows.Forms.RadioButton();
+            this.rBprice3 = new System.Windows.Forms.RadioButton();
+            this.rBprice2 = new System.Windows.Forms.RadioButton();
+            this.rBprice1 = new System.Windows.Forms.RadioButton();
+            this.label1 = new System.Windows.Forms.Label();
             this.listBox1 = new System.Windows.Forms.ListBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
             this.CheckButton = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
             this.tabPage3.SuspendLayout();
+            this.tabPage4.SuspendLayout();
             this.SuspendLayout();
             // 
             // progressBar1
             // 
-            this.progressBar1.Location = new System.Drawing.Point(12, 583);
+            this.progressBar1.Location = new System.Drawing.Point(82, 13);
             this.progressBar1.Name = "progressBar1";
-            this.progressBar1.Size = new System.Drawing.Size(776, 20);
+            this.progressBar1.Size = new System.Drawing.Size(603, 20);
             this.progressBar1.TabIndex = 0;
             // 
             // NextButton
@@ -95,6 +105,7 @@
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Controls.Add(this.tabPage3);
+            this.tabControl1.Controls.Add(this.tabPage4);
             this.tabControl1.Location = new System.Drawing.Point(82, 33);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.RightToLeft = System.Windows.Forms.RightToLeft.No;
@@ -104,74 +115,89 @@
             // 
             // tabPage1
             // 
-            this.tabPage1.Controls.Add(this.rBprice4);
-            this.tabPage1.Controls.Add(this.rBprice3);
-            this.tabPage1.Controls.Add(this.rBprice2);
-            this.tabPage1.Controls.Add(this.rBprice1);
-            this.tabPage1.Controls.Add(this.label1);
+            this.tabPage1.Controls.Add(this.rBdriveFast);
+            this.tabPage1.Controls.Add(this.rBdriveNature);
+            this.tabPage1.Controls.Add(this.label4);
+            this.tabPage1.Controls.Add(this.rBdriveTravel);
+            this.tabPage1.Controls.Add(this.rBdriveDach);
+            this.tabPage1.Controls.Add(this.rBdriveCity);
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage1.Size = new System.Drawing.Size(599, 212);
-            this.tabPage1.TabIndex = 0;
-            this.tabPage1.Text = "tabPage1";
+            this.tabPage1.TabIndex = 3;
+            this.tabPage1.Text = "Езда";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
-            // rBprice4
+            // rBdriveFast
             // 
-            this.rBprice4.AutoSize = true;
-            this.rBprice4.Location = new System.Drawing.Point(267, 106);
-            this.rBprice4.Name = "rBprice4";
-            this.rBprice4.Size = new System.Drawing.Size(120, 17);
-            this.rBprice4.TabIndex = 4;
-            this.rBprice4.TabStop = true;
-            this.rBprice4.Text = "Свыше 6 000 000 ₽";
-            this.rBprice4.UseVisualStyleBackColor = true;
+            this.rBdriveFast.AutoSize = true;
+            this.rBdriveFast.Location = new System.Drawing.Point(151, 154);
+            this.rBdriveFast.Name = "rBdriveFast";
+            this.rBdriveFast.Size = new System.Drawing.Size(64, 17);
+            this.rBdriveFast.TabIndex = 6;
+            this.rBdriveFast.TabStop = true;
+            this.rBdriveFast.Text = "Драйва";
+            this.rBdriveFast.UseVisualStyleBackColor = true;
             // 
-            // rBprice3
+            // rBdriveNature
             // 
-            this.rBprice3.AutoSize = true;
-            this.rBprice3.Location = new System.Drawing.Point(31, 106);
-            this.rBprice3.Name = "rBprice3";
-            this.rBprice3.Size = new System.Drawing.Size(97, 17);
-            this.rBprice3.TabIndex = 3;
-            this.rBprice3.TabStop = true;
-            this.rBprice3.Text = "до 6 000 000 ₽";
-            this.rBprice3.UseVisualStyleBackColor = true;
+            this.rBdriveNature.AutoSize = true;
+            this.rBdriveNature.Location = new System.Drawing.Point(266, 69);
+            this.rBdriveNature.Name = "rBdriveNature";
+            this.rBdriveNature.Size = new System.Drawing.Size(71, 17);
+            this.rBdriveNature.TabIndex = 5;
+            this.rBdriveNature.TabStop = true;
+            this.rBdriveNature.Text = "Природы";
+            this.rBdriveNature.UseVisualStyleBackColor = true;
             // 
-            // rBprice2
+            // label4
             // 
-            this.rBprice2.AutoSize = true;
-            this.rBprice2.Location = new System.Drawing.Point(267, 46);
-            this.rBprice2.Name = "rBprice2";
-            this.rBprice2.Size = new System.Drawing.Size(97, 17);
-            this.rBprice2.TabIndex = 2;
-            this.rBprice2.TabStop = true;
-            this.rBprice2.Text = "до 2 500 000 ₽";
-            this.rBprice2.UseVisualStyleBackColor = true;
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(27, 19);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(336, 13);
+            this.label4.TabIndex = 4;
+            this.label4.Text = "Для чего преимущественно будет использоватсья автомобиль?";
             // 
-            // rBprice1
+            // rBdriveTravel
             // 
-            this.rBprice1.AutoSize = true;
-            this.rBprice1.Location = new System.Drawing.Point(31, 46);
-            this.rBprice1.Name = "rBprice1";
-            this.rBprice1.Size = new System.Drawing.Size(97, 17);
-            this.rBprice1.TabIndex = 1;
-            this.rBprice1.TabStop = true;
-            this.rBprice1.Text = "до 1 600 000 ₽";
-            this.rBprice1.UseVisualStyleBackColor = true;
+            this.rBdriveTravel.AutoSize = true;
+            this.rBdriveTravel.Location = new System.Drawing.Point(266, 108);
+            this.rBdriveTravel.Name = "rBdriveTravel";
+            this.rBdriveTravel.Size = new System.Drawing.Size(92, 17);
+            this.rBdriveTravel.TabIndex = 3;
+            this.rBdriveTravel.TabStop = true;
+            this.rBdriveTravel.Text = "Путешествий";
+            this.rBdriveTravel.UseVisualStyleBackColor = true;
             // 
-            // label1
+            // rBdriveDach
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(16, 13);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(100, 13);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Цена автомобиля:";
+            this.rBdriveDach.AutoSize = true;
+            this.rBdriveDach.Location = new System.Drawing.Point(42, 108);
+            this.rBdriveDach.Name = "rBdriveDach";
+            this.rBdriveDach.Size = new System.Drawing.Size(51, 17);
+            this.rBdriveDach.TabIndex = 2;
+            this.rBdriveDach.TabStop = true;
+            this.rBdriveDach.Text = "Дачи";
+            this.rBdriveDach.UseVisualStyleBackColor = true;
+            // 
+            // rBdriveCity
+            // 
+            this.rBdriveCity.AutoSize = true;
+            this.rBdriveCity.Location = new System.Drawing.Point(42, 66);
+            this.rBdriveCity.Name = "rBdriveCity";
+            this.rBdriveCity.Size = new System.Drawing.Size(61, 17);
+            this.rBdriveCity.TabIndex = 0;
+            this.rBdriveCity.TabStop = true;
+            this.rBdriveCity.Text = "Города";
+            this.rBdriveCity.UseVisualStyleBackColor = true;
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.rBbodyFurgon);
+            this.tabPage2.Controls.Add(this.rBbodyAny);
+            this.tabPage2.Controls.Add(this.rBbodyMicrobus);
             this.tabPage2.Controls.Add(this.rBbodyWagon);
             this.tabPage2.Controls.Add(this.rBbodyHatch);
             this.tabPage2.Controls.Add(this.rBbodyMinivan);
@@ -184,8 +210,41 @@
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage2.Size = new System.Drawing.Size(599, 212);
             this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "tabPage2";
+            this.tabPage2.Text = "Кузов";
             this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // rBbodyFurgon
+            // 
+            this.rBbodyFurgon.AutoSize = true;
+            this.rBbodyFurgon.Location = new System.Drawing.Point(250, 173);
+            this.rBbodyFurgon.Name = "rBbodyFurgon";
+            this.rBbodyFurgon.Size = new System.Drawing.Size(64, 17);
+            this.rBbodyFurgon.TabIndex = 9;
+            this.rBbodyFurgon.TabStop = true;
+            this.rBbodyFurgon.Text = "Фургон";
+            this.rBbodyFurgon.UseVisualStyleBackColor = true;
+            // 
+            // rBbodyAny
+            // 
+            this.rBbodyAny.AutoSize = true;
+            this.rBbodyAny.Location = new System.Drawing.Point(436, 113);
+            this.rBbodyAny.Name = "rBbodyAny";
+            this.rBbodyAny.Size = new System.Drawing.Size(59, 17);
+            this.rBbodyAny.TabIndex = 8;
+            this.rBbodyAny.TabStop = true;
+            this.rBbodyAny.Text = "Любой";
+            this.rBbodyAny.UseVisualStyleBackColor = true;
+            // 
+            // rBbodyMicrobus
+            // 
+            this.rBbodyMicrobus.AutoSize = true;
+            this.rBbodyMicrobus.Location = new System.Drawing.Point(39, 173);
+            this.rBbodyMicrobus.Name = "rBbodyMicrobus";
+            this.rBbodyMicrobus.Size = new System.Drawing.Size(98, 17);
+            this.rBbodyMicrobus.TabIndex = 7;
+            this.rBbodyMicrobus.TabStop = true;
+            this.rBbodyMicrobus.Text = "Микроавтобус";
+            this.rBbodyMicrobus.UseVisualStyleBackColor = true;
             // 
             // rBbodyWagon
             // 
@@ -225,10 +284,10 @@
             this.rBbodySUV.AutoSize = true;
             this.rBbodySUV.Location = new System.Drawing.Point(39, 133);
             this.rBbodySUV.Name = "rBbodySUV";
-            this.rBbodySUV.Size = new System.Drawing.Size(94, 17);
+            this.rBbodySUV.Size = new System.Drawing.Size(47, 17);
             this.rBbodySUV.TabIndex = 3;
             this.rBbodySUV.TabStop = true;
-            this.rBbodySUV.Text = "Внедорожник";
+            this.rBbodySUV.Text = "SUV";
             this.rBbodySUV.UseVisualStyleBackColor = true;
             // 
             // rBbodySedan
@@ -275,7 +334,7 @@
             this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage3.Size = new System.Drawing.Size(599, 212);
             this.tabPage3.TabIndex = 2;
-            this.tabPage3.Text = "tabPage3";
+            this.tabPage3.Text = "Коробка";
             this.tabPage3.UseVisualStyleBackColor = true;
             // 
             // rBtransAny
@@ -342,30 +401,90 @@
             this.label3.TabIndex = 0;
             this.label3.Text = "Тип коробки";
             // 
+            // tabPage4
+            // 
+            this.tabPage4.Controls.Add(this.rBprice4);
+            this.tabPage4.Controls.Add(this.rBprice3);
+            this.tabPage4.Controls.Add(this.rBprice2);
+            this.tabPage4.Controls.Add(this.rBprice1);
+            this.tabPage4.Controls.Add(this.label1);
+            this.tabPage4.Location = new System.Drawing.Point(4, 22);
+            this.tabPage4.Name = "tabPage4";
+            this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage4.Size = new System.Drawing.Size(599, 212);
+            this.tabPage4.TabIndex = 0;
+            this.tabPage4.Text = "Цена";
+            this.tabPage4.UseVisualStyleBackColor = true;
+            // 
+            // rBprice4
+            // 
+            this.rBprice4.AutoSize = true;
+            this.rBprice4.Location = new System.Drawing.Point(267, 74);
+            this.rBprice4.Name = "rBprice4";
+            this.rBprice4.Size = new System.Drawing.Size(120, 17);
+            this.rBprice4.TabIndex = 4;
+            this.rBprice4.Text = "Свыше 6 000 000 ₽";
+            this.rBprice4.UseVisualStyleBackColor = true;
+            // 
+            // rBprice3
+            // 
+            this.rBprice3.AutoSize = true;
+            this.rBprice3.Location = new System.Drawing.Point(31, 74);
+            this.rBprice3.Name = "rBprice3";
+            this.rBprice3.Size = new System.Drawing.Size(97, 17);
+            this.rBprice3.TabIndex = 3;
+            this.rBprice3.Text = "до 6 000 000 ₽";
+            this.rBprice3.UseVisualStyleBackColor = true;
+            // 
+            // rBprice2
+            // 
+            this.rBprice2.AutoSize = true;
+            this.rBprice2.Location = new System.Drawing.Point(267, 37);
+            this.rBprice2.Name = "rBprice2";
+            this.rBprice2.Size = new System.Drawing.Size(97, 17);
+            this.rBprice2.TabIndex = 2;
+            this.rBprice2.Text = "до 2 500 000 ₽";
+            this.rBprice2.UseVisualStyleBackColor = true;
+            // 
+            // rBprice1
+            // 
+            this.rBprice1.AutoSize = true;
+            this.rBprice1.Checked = true;
+            this.rBprice1.Location = new System.Drawing.Point(31, 37);
+            this.rBprice1.Name = "rBprice1";
+            this.rBprice1.Size = new System.Drawing.Size(97, 17);
+            this.rBprice1.TabIndex = 1;
+            this.rBprice1.TabStop = true;
+            this.rBprice1.Text = "до 1 600 000 ₽";
+            this.rBprice1.UseVisualStyleBackColor = true;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(16, 13);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(100, 13);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Цена автомобиля:";
+            // 
             // listBox1
             // 
+            this.listBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.listBox1.FormattingEnabled = true;
-            this.listBox1.Location = new System.Drawing.Point(86, 386);
+            this.listBox1.ItemHeight = 16;
+            this.listBox1.Location = new System.Drawing.Point(82, 371);
             this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(509, 108);
+            this.listBox1.Size = new System.Drawing.Size(620, 228);
             this.listBox1.TabIndex = 5;
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(83, 347);
+            this.label5.Location = new System.Drawing.Point(79, 332);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(80, 13);
             this.label5.TabIndex = 6;
             this.label5.Text = "Вам подходит:";
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(111, 514);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(438, 20);
-            this.textBox1.TabIndex = 8;
-            this.textBox1.Visible = false;
             // 
             // CheckButton
             // 
@@ -373,7 +492,7 @@
             this.CheckButton.Name = "CheckButton";
             this.CheckButton.Size = new System.Drawing.Size(75, 23);
             this.CheckButton.TabIndex = 9;
-            this.CheckButton.Text = "CHECK";
+            this.CheckButton.Text = "Подобрать";
             this.CheckButton.UseVisualStyleBackColor = true;
             this.CheckButton.Click += new System.EventHandler(this.CheckButton_Click);
             // 
@@ -383,13 +502,12 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(822, 615);
             this.Controls.Add(this.CheckButton);
-            this.Controls.Add(this.textBox1);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.listBox1);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.DownButton1);
-            this.Controls.Add(this.NextButton);
             this.Controls.Add(this.progressBar1);
+            this.Controls.Add(this.NextButton);
             this.Name = "Form1";
             this.Text = "Экспертная система выбора  легкового автомобиля";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
@@ -401,6 +519,8 @@
             this.tabPage2.PerformLayout();
             this.tabPage3.ResumeLayout(false);
             this.tabPage3.PerformLayout();
+            this.tabPage4.ResumeLayout(false);
+            this.tabPage4.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -412,7 +532,7 @@
         private System.Windows.Forms.Button NextButton;
         private System.Windows.Forms.Button DownButton1;
         private System.Windows.Forms.TabControl tabControl1;
-        private System.Windows.Forms.TabPage tabPage1;
+        private System.Windows.Forms.TabPage tabPage4;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.TabPage tabPage3;
@@ -434,9 +554,18 @@
         private System.Windows.Forms.RadioButton rBbodyHatch;
         private System.Windows.Forms.ListBox listBox1;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Button CheckButton;
         private System.Windows.Forms.RadioButton rBtransAny;
+        private System.Windows.Forms.RadioButton rBbodyAny;
+        private System.Windows.Forms.RadioButton rBbodyMicrobus;
+        private System.Windows.Forms.TabPage tabPage1;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.RadioButton rBdriveTravel;
+        private System.Windows.Forms.RadioButton rBdriveDach;
+        private System.Windows.Forms.RadioButton rBdriveCity;
+        private System.Windows.Forms.RadioButton rBbodyFurgon;
+        private System.Windows.Forms.RadioButton rBdriveNature;
+        private System.Windows.Forms.RadioButton rBdriveFast;
     }
 }
 
