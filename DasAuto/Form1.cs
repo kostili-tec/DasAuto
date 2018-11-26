@@ -32,6 +32,13 @@ namespace DasAuto
             //tabSel = tabControl1.SelectedIndex;
         }
 
+        public void pb_count(int valueBar)  // загрузка
+        {
+            int count = 3;                      // колличество делений в загрузке
+            progressBar1.Maximum = count;
+            progressBar1.Value = valueBar;
+        }
+
         private void Form1_Load(object sender, EventArgs e)
         {
             tabControl1.SelectedIndex = 0;
@@ -45,6 +52,8 @@ namespace DasAuto
             if (tabN >= 4)
                 tabN = 0;
             tabControl1.SelectedIndex = tabN;
+            pb_count(tabN);
+
         }
 
         private void DownButton1_Click(object sender, EventArgs e)
@@ -54,6 +63,7 @@ namespace DasAuto
             if (tabSel < 0)
                 tabSel = 3;
             tabControl1.SelectedIndex = tabSel;
+            pb_count(tabSel);
             
 
         }
