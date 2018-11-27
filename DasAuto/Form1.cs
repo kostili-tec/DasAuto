@@ -31,10 +31,15 @@ namespace DasAuto
             myConnection = new OleDbConnection(connectString);
 
             myConnection.Open();
-            
+
+            //panel1.BackColor = Color.FromArgb(255, 66, 88);
+            //listBox1.BackColor = Color.FromArgb(32, 43, 61);            
+            //tabPage1.BackColor = Color.FromArgb(65, 65, 65);
+
+            panel2.BringToFront();
         }
         int tabN;
-        int tabSel;       
+        int tabSel;
 
 
         public class GlobalVars
@@ -72,7 +77,7 @@ namespace DasAuto
                 vars.rPriceClass = "Price < 999999999";
                 vars.rPriceClassMin = " AND Price > 6000000";
             }
-          }
+        }
 
         public void TabBody()
         {
@@ -106,7 +111,7 @@ namespace DasAuto
                 vars.rTrans = " AND Transmission = 'Механика'";
 
             if (rBtrans2.Checked)
-                vars.rTrans = " AND Transmission = 'Автомат'";            
+                vars.rTrans = " AND Transmission = 'Автомат'";
 
             if (rBtransAny.Checked)
                 vars.rTrans = ""; //" AND Transmission = 'Механика' OR Transmission = 'Автомат' OR Transmission = 'Робот' OR Transmission = 'Вариатор'"; // пока хз
@@ -139,25 +144,25 @@ namespace DasAuto
             TabTrans();
             TabDrive();
             listBox1.Items.Clear();
-            
+
             string strPr2 = vars.strPr;
 
             /* string query = "SELECT name_mark, Model, Body, Transmission, Price FROM Model WHERE Price < " + vars.rPriceClass.ToString() + " AND Price > " + vars.rPriceClassMin.ToString() + " AND Body = " 
                                   + vars.rBodyCheck.ToString() + " AND (Transmission = " + vars.rTrans + ")"; */
 
-           // string query = "SELECT name_mark, Model, Body, Transmission, Price FROM Model WHERE " + vars.rPriceClass.ToString() + vars.rPriceClassMin.ToString() + vars.rDrive.ToString();
+            // string query = "SELECT name_mark, Model, Body, Transmission, Price FROM Model WHERE " + vars.rPriceClass.ToString() + vars.rPriceClassMin.ToString() + vars.rDrive.ToString();
 
             string query = "SELECT name_mark, Model, Body, Transmission, Price FROM Model WHERE " + vars.rPriceClass.ToString() + vars.rPriceClassMin.ToString() + vars.rBodyCheck.ToString() + vars.rTrans.ToString() + vars.rDrive.ToString();
             strPr2 = query;
-            
-                OleDbCommand command = new OleDbCommand(strPr2, myConnection);
-                OleDbDataReader reader = command.ExecuteReader();
-               
-                while (reader.Read())
-                {
-                    listBox1.Items.Add(reader[0].ToString() + " " + reader[1].ToString() + ", " + reader[2].ToString() + ", " + reader[3].ToString() + ", " + reader[4].ToString() + " ₽ ");
-                }
-                reader.Close();
+
+            OleDbCommand command = new OleDbCommand(strPr2, myConnection);
+            OleDbDataReader reader = command.ExecuteReader();
+
+            while (reader.Read())
+            {
+                listBox1.Items.Add(reader[0].ToString() + " " + reader[1].ToString() + ", " + reader[2].ToString() + ", " + reader[3].ToString() + ", " + reader[4].ToString() + " ₽ ");
+            }
+            reader.Close();
         }
 
         public void Pb_count(int valueBar)  // бар загрузки
@@ -169,26 +174,27 @@ namespace DasAuto
 
         private void Form1_Load(object sender, EventArgs e)
         {
-           
+
             tabControl1.SelectedIndex = 0;
             rBdriveCity.Checked = true;
             rBprice1.Checked = true;
-            rBbodySedan.Checked = true;
-            rBtrans1.Checked = true;
-            
+            rBbodyAny.Checked = true;
+            rBtransAny.Checked = true;
+            progressBar1.Visible = false;
+
         }
 
         private void NextButton_Click(object sender, EventArgs e)
         {
             tabN = tabControl1.SelectedIndex;
-            tabN++;            
-            
+            tabN++;
+
             if (tabN >= 4)
-                tabN = 0;
+                tabN = 3;
             tabControl1.SelectedIndex = tabN;
             Pb_count(tabN);
             TabPrice();
-            
+
         }
 
         private void DownButton1_Click(object sender, EventArgs e)
@@ -196,9 +202,9 @@ namespace DasAuto
             tabSel = tabControl1.SelectedIndex;
             tabSel--;
             if (tabSel < 0)
-                tabSel = 3;
+                tabSel = 0;
             tabControl1.SelectedIndex = tabSel;
-            Pb_count(tabSel); 
+            Pb_count(tabSel);
         }
 
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
@@ -211,11 +217,48 @@ namespace DasAuto
             Sql_getter();
         }
 
-       
+        private void buttonToOrigin_Click(object sender, EventArgs e)
+        {
+            tabControl1.SelectedIndex = 0;
+            Pb_count(0);
+            listBox1.Items.Clear();
+        }
 
-       
+        private void buttonClear_Click(object sender, EventArgs e)
+        {
+            listBox1.Items.Clear();
+        }
 
-        
-        
+        private void buttonExit_Click(object sender, EventArgs e)
+        {
+            myConnection.Close();
+            Application.Exit();
+        }
+
+        private void panel1_MouseDown(object sender, MouseEventArgs e)
+        {
+
+        }
+
+        private void panel1_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (e.Button == System.Windows.Forms.MouseButtons.Left)
+            {
+                (sender as Control).Capture = false;//picturebox не ловит событие
+                Message m = Message.Create(this.Handle, 0xa1, new IntPtr(2), IntPtr.Zero);
+                this.DefWndProc(ref m);
+            }
+        }
+
+        private void label6_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (e.Button == System.Windows.Forms.MouseButtons.Left)
+            {
+                (sender as Control).Capture = false;//picturebox не ловит событие
+                Message m = Message.Create(this.Handle, 0xa1, new IntPtr(2), IntPtr.Zero);
+                this.DefWndProc(ref m);
+            }
+
+        }
     }
 }
