@@ -64,7 +64,6 @@
             this.listBox1 = new System.Windows.Forms.ListBox();
             this.label5 = new System.Windows.Forms.Label();
             this.CheckButton = new System.Windows.Forms.Button();
-            this.buttonClear = new System.Windows.Forms.Button();
             this.buttonToOrigin = new System.Windows.Forms.Button();
             this.buttonExit = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
@@ -85,7 +84,7 @@
             // progressBar1
             // 
             this.progressBar1.BackColor = System.Drawing.SystemColors.Control;
-            this.progressBar1.Location = new System.Drawing.Point(0, 33);
+            this.progressBar1.Location = new System.Drawing.Point(-531, 554);
             this.progressBar1.Name = "progressBar1";
             this.progressBar1.Size = new System.Drawing.Size(663, 20);
             this.progressBar1.TabIndex = 0;
@@ -98,7 +97,7 @@
             this.NextButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.NextButton.Font = new System.Drawing.Font("Segoe UI", 11.75F);
             this.NextButton.ForeColor = System.Drawing.Color.White;
-            this.NextButton.Location = new System.Drawing.Point(122, 245);
+            this.NextButton.Location = new System.Drawing.Point(122, 218);
             this.NextButton.Name = "NextButton";
             this.NextButton.Size = new System.Drawing.Size(91, 32);
             this.NextButton.TabIndex = 2;
@@ -114,7 +113,7 @@
             this.DownButton1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.DownButton1.Font = new System.Drawing.Font("Segoe UI", 11.75F);
             this.DownButton1.ForeColor = System.Drawing.Color.White;
-            this.DownButton1.Location = new System.Drawing.Point(12, 245);
+            this.DownButton1.Location = new System.Drawing.Point(12, 218);
             this.DownButton1.Name = "DownButton1";
             this.DownButton1.Size = new System.Drawing.Size(91, 32);
             this.DownButton1.TabIndex = 3;
@@ -130,16 +129,17 @@
             this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Controls.Add(this.tabPage3);
             this.tabControl1.Controls.Add(this.tabPage4);
-            this.tabControl1.Location = new System.Drawing.Point(-5, 59);
+            this.tabControl1.Location = new System.Drawing.Point(-5, 32);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.tabControl1.SelectedIndex = 0;
             this.tabControl1.Size = new System.Drawing.Size(681, 179);
             this.tabControl1.TabIndex = 4;
+            this.tabControl1.SelectedIndexChanged += new System.EventHandler(this.tabControl1_SelectedIndexChanged);
             // 
             // tabPage1
             // 
-            this.tabPage1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(72)))), ((int)(((byte)(97)))), ((int)(((byte)(138)))));
+            this.tabPage1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(86)))), ((int)(((byte)(116)))), ((int)(((byte)(165)))));
             this.tabPage1.Controls.Add(this.rBdriveFast);
             this.tabPage1.Controls.Add(this.rBdriveNature);
             this.tabPage1.Controls.Add(this.label4);
@@ -525,15 +525,15 @@
             // 
             // listBox1
             // 
-            this.listBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(43)))), ((int)(((byte)(61)))));
+            this.listBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(231)))), ((int)(((byte)(255)))));
             this.listBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.listBox1.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.listBox1.ForeColor = System.Drawing.Color.White;
+            this.listBox1.ForeColor = System.Drawing.Color.Black;
             this.listBox1.FormattingEnabled = true;
             this.listBox1.ItemHeight = 20;
-            this.listBox1.Location = new System.Drawing.Point(0, 328);
+            this.listBox1.Location = new System.Drawing.Point(0, 289);
             this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(663, 220);
+            this.listBox1.Size = new System.Drawing.Size(663, 260);
             this.listBox1.TabIndex = 5;
             // 
             // label5
@@ -554,7 +554,7 @@
             this.CheckButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.CheckButton.Font = new System.Drawing.Font("Segoe UI", 11.75F);
             this.CheckButton.ForeColor = System.Drawing.Color.White;
-            this.CheckButton.Location = new System.Drawing.Point(529, 245);
+            this.CheckButton.Location = new System.Drawing.Point(529, 218);
             this.CheckButton.Name = "CheckButton";
             this.CheckButton.Size = new System.Drawing.Size(115, 32);
             this.CheckButton.TabIndex = 9;
@@ -563,17 +563,6 @@
             this.CheckButton.UseVisualStyleBackColor = false;
             this.CheckButton.Click += new System.EventHandler(this.CheckButton_Click);
             // 
-            // buttonClear
-            // 
-            this.buttonClear.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.buttonClear.Location = new System.Drawing.Point(25, 568);
-            this.buttonClear.Name = "buttonClear";
-            this.buttonClear.Size = new System.Drawing.Size(88, 28);
-            this.buttonClear.TabIndex = 10;
-            this.buttonClear.Text = "Очистить";
-            this.buttonClear.UseVisualStyleBackColor = true;
-            this.buttonClear.Click += new System.EventHandler(this.buttonClear_Click);
-            // 
             // buttonToOrigin
             // 
             this.buttonToOrigin.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(86)))), ((int)(((byte)(116)))), ((int)(((byte)(165)))));
@@ -581,7 +570,7 @@
             this.buttonToOrigin.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonToOrigin.Font = new System.Drawing.Font("Segoe UI", 11.75F);
             this.buttonToOrigin.ForeColor = System.Drawing.Color.White;
-            this.buttonToOrigin.Location = new System.Drawing.Point(246, 245);
+            this.buttonToOrigin.Location = new System.Drawing.Point(246, 218);
             this.buttonToOrigin.Name = "buttonToOrigin";
             this.buttonToOrigin.Size = new System.Drawing.Size(91, 32);
             this.buttonToOrigin.TabIndex = 11;
@@ -608,14 +597,15 @@
             // 
             // panel2
             // 
-            this.panel2.Location = new System.Drawing.Point(-8, 229);
+            this.panel2.Location = new System.Drawing.Point(-8, 202);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(687, 10);
             this.panel2.TabIndex = 14;
+            this.panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
             // 
             // panel1
             // 
-            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(170)))), ((int)(((byte)(0)))));
+            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(86)))), ((int)(((byte)(116)))), ((int)(((byte)(165)))));
             this.panel1.Controls.Add(this.label6);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
@@ -628,7 +618,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(170)))), ((int)(((byte)(0)))));
+            this.label6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(86)))), ((int)(((byte)(116)))), ((int)(((byte)(165)))));
             this.label6.Dock = System.Windows.Forms.DockStyle.Left;
             this.label6.Font = new System.Drawing.Font("Tahoma", 18.25F);
             this.label6.ForeColor = System.Drawing.Color.White;
@@ -641,26 +631,27 @@
             // 
             // panel3
             // 
-            this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(43)))), ((int)(((byte)(61)))));
+            this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(86)))), ((int)(((byte)(116)))), ((int)(((byte)(165)))));
             this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel3.Controls.Add(this.label5);
-            this.panel3.Location = new System.Drawing.Point(-8, 304);
+            this.panel3.Location = new System.Drawing.Point(-8, 265);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(680, 26);
             this.panel3.TabIndex = 16;
             // 
             // panel4
             // 
-            this.panel4.Location = new System.Drawing.Point(-8, 58);
+            this.panel4.Location = new System.Drawing.Point(-8, 31);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(700, 28);
             this.panel4.TabIndex = 17;
+            this.panel4.Paint += new System.Windows.Forms.PaintEventHandler(this.panel4_Paint);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(61)))), ((int)(((byte)(61)))), ((int)(((byte)(61)))));
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(229)))), ((int)(((byte)(202)))));
             this.ClientSize = new System.Drawing.Size(663, 604);
             this.Controls.Add(this.panel4);
             this.Controls.Add(this.panel3);
@@ -669,7 +660,6 @@
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.buttonExit);
             this.Controls.Add(this.buttonToOrigin);
-            this.Controls.Add(this.buttonClear);
             this.Controls.Add(this.CheckButton);
             this.Controls.Add(this.listBox1);
             this.Controls.Add(this.tabControl1);
@@ -736,7 +726,6 @@
         private System.Windows.Forms.RadioButton rBbodyFurgon;
         private System.Windows.Forms.RadioButton rBdriveNature;
         private System.Windows.Forms.RadioButton rBdriveFast;
-        private System.Windows.Forms.Button buttonClear;
         private System.Windows.Forms.Button buttonToOrigin;
         private System.Windows.Forms.Button buttonExit;
         private System.Windows.Forms.Panel panel2;
